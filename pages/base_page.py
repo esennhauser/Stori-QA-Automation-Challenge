@@ -48,6 +48,14 @@ class BasePage:
         except Exception as ex:
             self.errors.append(ex.msg)
 
+    def click_by_css(self, selector):
+        try:
+            WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located((By.CSS_SELECTOR, selector)))
+            val = self.driver.find_element(By.CSS_SELECTOR, selector)
+            val.click()
+        except Exception as ex:
+            self.errors.append(ex.msg)
+
     def select_element_by_xpath(self, element):
         try:
             val = WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located((By.XPATH, element)))

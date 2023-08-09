@@ -17,10 +17,22 @@ def setup_function(test_info):
 
 @when("we enter the word 'Me'")
 def look_for(setup_function):
-    print("\n\t\t-----Writing and selecting 'Mexico'-----")
+    print("\n\t\t-----Test writing and selecting 'Mexico' (using pytest-bdd)-----\n")
     setup_function.look_for("Me")
 
 
-@then("we select 'Mexico'")
+@when("we select 'Mexico'")
 def select_mexico(setup_function):
     setup_function.click_by_xpath(setup_function.Mexico)
+
+
+@then("we can see 'Mexico' is selected")
+def verify_mexico(setup_function):
+    suggestion_selected = setup_function.select_element_by_xpath(setup_function.suggestion_class_textbox).get_attribute('value')
+    try:
+        assert "Mexico" in suggestion_selected, "ERROR. Mexico not selected. "
+        print("Country 'Mexico' selected successfully. \n")
+        print("Test Passed.")
+    except Exception as ex:
+        print("Test Failed.")
+        setup_function.errors.append(ex)

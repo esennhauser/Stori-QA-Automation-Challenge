@@ -4,7 +4,7 @@ from pages.base_page import BasePage
 
 class PracticePage(BasePage):
 
-    suggestion_class_textbox = "//input[contains(@placeholder,'Type to Select Countries')]"
+    suggestion_class_textbox = "//input[@placeholder='Type to Select Countries']"
     Mexico = "//div[@tabindex='-1'][contains(.,'Mexico')]"
 
     dropdown_example = "//body[1]/div[1]/div[3]/fieldset[1]/select[1]"
@@ -15,12 +15,12 @@ class PracticePage(BasePage):
     open_window_button = "//button[contains(.,'Open Window')]"
     element_expected = "//*[contains(text(), '30 DAY MONEY BACK GUARANTEE')]"
 
-    open_tab = "//a[contains(@id,'opentab')]"
+    open_tab = "#opentab"
     view_all_courses = "//a[contains(.,'View all courses')]"
     access_all_our_courses = "//a[contains(.,'Access all our Courses')]"
 
     switch_to_alert_textbox = "//input[@id='name']"
-    alert_button = "//input[@id='alertbtn']"
+    alert_button = "#alertbtn"
     confirm_button = "//input[@id='confirmbtn']"
 
     price_column = "div.block.large-row-spacer:nth-child(5) div.left-align fieldset:nth-child(1) " \
@@ -46,11 +46,10 @@ class PracticePage(BasePage):
     def take_screenshot_of_button(self, button):
         element_expected = self.select_element_by_xpath(button)
         try:
-            assert element_expected is not None, "ERROR, Test failed. "
+            assert element_expected is not None, "ERROR. Element not found. "
             button_picture = "screenshot.png"
             self.driver.save_screenshot(button_picture)
         except Exception as ex:
-            print("ERROR, Test failed. ")
             self.errors.append(ex)
 
     def take_screenshot_of_page(self):

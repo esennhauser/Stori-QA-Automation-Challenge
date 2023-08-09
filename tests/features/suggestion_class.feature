@@ -7,5 +7,6 @@ Feature: suggestion class
 
   Scenario:  look for and select mexico
       Given we launch browser and go to Automation Practice page
-      When we enter the word 'Me'
-      Then we select 'Mexico'
+      When  we enter the word 'Me'
+      And   we select 'Mexico'
+      Then  we can see 'Mexico' is selected

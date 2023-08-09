@@ -25,10 +25,16 @@ following command:
 
 EXECUTION
 
-Use the following command:
+Use the following command to run the test in chrome browser and generate a html report:
 
         ------------------------------------------------------------------------------------------------------
-        -----    pytest --browser chrome --html=../Reports/report.html --self-contained-html             -----
+        -----          pytest --browser chrome --html=Reports/report.html --self-contained-html          -----
+        ------------------------------------------------------------------------------------------------------
+
+Use the following command to generate a xml report:
+
+        ------------------------------------------------------------------------------------------------------
+        -----          pytest --browser chrome --junit-xml=Reports/report.xml                            -----
         ------------------------------------------------------------------------------------------------------
 
 Note that you can replace chrome with firefox or edge. Each command will execute the tests in a different browser.
